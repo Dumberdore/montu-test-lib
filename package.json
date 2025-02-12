@@ -1,0 +1,23 @@
+{
+  "name": "montu-test-lib",
+  "version": "1.0.0",
+  "description": "Montu take-home test",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dumberdore/montu-test-lib.git"
+  },
+  "author": "Prakash Dumbre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dumberdore/montu-test-lib/issues"
+  },
+  "homepage": "https://github.com/Dumberdore/montu-test-lib#readme"
+}
