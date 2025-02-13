@@ -1,7 +1,3 @@
-// export {sayHello, sayGoodbye} from './hello-world'
-
-export function add(a: number, b: number): number {
-    return a + b;
+export function greet(name: string): string {
+    return `Hello, ${name}!`;
 }
-
-console.log(add(3, 5)); //output: 8

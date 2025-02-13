@@ -1,23 +1,36 @@
 {
   "name": "montu-test-lib",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Montu take-home test",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
-    "/dist"
+    "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
+  "keywords": [
+    "typescript",
+    "library"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dumberdore/montu-test-lib.git"
   },
   "author": "Prakash Dumbre",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Dumberdore/montu-test-lib/issues"
   },
-  "homepage": "https://github.com/Dumberdore/montu-test-lib#readme"
+  "homepage": "https://github.com/Dumberdore/montu-test-lib#readme",
+  "devDependencies": {
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
 }
