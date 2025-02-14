@@ -1,6 +1,6 @@
 {
   "name": "montu-test-lib",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Montu take-home test",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -29,6 +29,9 @@
   },
   "homepage": "https://github.com/Dumberdore/montu-test-lib#readme",
   "devDependencies": {
+    "@types/node": "^22.13.4",
+    "axios": "^1.7.9",
+    "axios-mock-adapter": "^2.1.0",
     "tsup": "^8.3.6",
     "typescript": "^5.7.3",
     "vitest": "^3.0.5"
