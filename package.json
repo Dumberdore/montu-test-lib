@@ -2,9 +2,9 @@
   "name": "montu-test-lib",
   "version": "1.0.3",
   "description": "Montu take-home test",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/AddressAutocomplete.js",
+  "module": "dist/AddressAutocomplete.mjs",
+  "types": "dist/AddressAutocomplete.d.ts",
   "files": [
     "dist"
   ],

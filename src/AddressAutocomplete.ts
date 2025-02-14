@@ -16,7 +16,7 @@ interface TomTomConfig {
 }
 
 class TomTomProvider implements AddressProvider {
-    private apiKey: string;
+    private readonly apiKey: string;
     private baseUrl: string = 'https://api.tomtom.com/search/2/search';
 
     constructor(config: TomTomConfig) {
