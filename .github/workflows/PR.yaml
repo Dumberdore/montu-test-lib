@@ -1,12 +1,12 @@
-name: NPM Publish
+name: PR Workflow
 
 on:
-  release:
-    types: [released]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  release:
-    name: Publish
+  pr:
+    name: PR Checks
     runs-on: ubuntu-latest
     steps:
       - name: ⏬ checkout
@@ -26,8 +26,3 @@ jobs:
 
       - name: 🧪 Test
         run: npm test
-
-      - name: 🚀 Publish
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
