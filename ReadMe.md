@@ -10,8 +10,6 @@
 
 ![NPM Publish](https://github.com/Dumberdore/montu-test-lib/actions/workflows/publish.yaml/badge.svg)
 
-###### :clap: & :heart: to [auto badger](https://github.com/technikhil314/auto-badger) for making badging simple
-
 [//]: <> (end placeholder for auto-badger)
 
 
