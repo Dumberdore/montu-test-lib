@@ -1,5 +1,20 @@
 # QuickRoute's Address Suggestion API 
 
+[![version](https://img.shields.io/npm/v/montu-test-lib.svg?style=flat-square)](https://npmjs.org/montu-test-lib)
+[![min size](https://img.shields.io/bundlephobia/min/montu-test-lib?style=flat-square)](https://bundlephobia.com/result?p=montu-test-lib)
+[![mingzip size](https://img.shields.io/bundlephobia/minzip/montu-test-lib)](https://bundlephobia.com/result?p=montu-test-lib)
+[![license](https://img.shields.io/npm/l/montu-test-lib?color=%23007a1f&style=flat-square)](https://github.com//Dumberdore/blob/master/LICENSE)
+
+[![dependancies](https://img.shields.io/librariesio/release/npm/montu-test-lib?color=%23007a1f&style=flat-square)](https://libraries.io/npm/montu-test-lib)
+[![downloads](https://img.shields.io/npm/dm/montu-test-lib?style=flat-square&color=%23007a1f)](https://npmcharts.com/compare/montu-test-lib)
+
+![NPM Publish](https://github.com/Dumberdore/montu-test-lib/actions/workflows/publish.yaml/badge.svg)
+
+###### :clap: & :heart: to [auto badger](https://github.com/technikhil314/auto-badger) for making badging simple
+
+[//]: <> (end placeholder for auto-badger)
+
+
 ## Usage
 ```js
 const tomTomProvider = new TomTomProvider({ apiKey: 'your_api_key_here' });
