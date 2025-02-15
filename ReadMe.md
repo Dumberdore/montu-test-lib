@@ -13,7 +13,7 @@
 [//]: <> (end placeholder for auto-badger)
 
 
-## Usage
+## Usage 🚀
 ```js
 const tomTomProvider = new TomTomProvider({ apiKey: 'your_api_key_here' });
 const addressService = new AddressService(tomTomProvider);
@@ -35,7 +35,7 @@ brew install npm
 npm install --save-dev typescript @types/node tsup vitest axios axios-mock-adapter
 ```
 
-## Usage
+## Build Locally 💻
 - Build 🧱
 ```shell
 npm run build
