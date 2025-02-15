@@ -14,10 +14,8 @@ interface AddressProvider {
     getSuggestions(query: string, options?: { limit?: number; countryCode?: string }): Promise<AddressSuggestion[]>;
 }
 
-// No need to make this interface public
 interface TomTomConfig {
     apiKey: string;
-    // Add baseUrl
 }
 
 class TomTomProvider implements AddressProvider {
