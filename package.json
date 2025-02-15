@@ -1,6 +1,6 @@
 {
   "name": "montu-test-lib",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Montu take-home test",
   "main": "dist/AddressAutocomplete.js",
   "module": "dist/AddressAutocomplete.mjs",
