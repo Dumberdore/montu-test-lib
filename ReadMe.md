@@ -17,7 +17,7 @@
 ```js
 const tomTomProvider = new TomTomProvider({ apiKey: 'your_api_key_here' });
 const addressService = new AddressService(tomTomProvider);
-addressService.getSuggestions('1600 Amphitheatre', { limit: 5, countryCode: 'AU' })
+addressService.getSuggestions('72 Creek', { limit: 5 })
   .then((suggestions) => console.log(suggestions))
   .catch((error) => console.error(error));
 
