@@ -1,5 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi, Mock } from 'vitest';
 import { AddressService, AddressProvider, TomTomProvider, AddressSuggestion } from './AddressAutocomplete';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
@@ -21,21 +20,23 @@ describe('TomTomProvider', () => {
         const mockResponse = {
             results: [
                 {
-                    address: { freeformAddress: '123 Main St, Springfield' },
-                    position: { lat: 40.123, lon: -75.123 },
+                    address: {country:'Australia', municipality:'Riddells Creek', freeformAddress: 'Riddells Creek, VIC' },
+                    position: { lat: -37.455046, lon: 144.68643 },
                 },
             ],
         };
 
         mockAxios.onGet(/search\/2\/search/).reply(200, mockResponse);
 
-        const suggestions = await tomTomProvider.getSuggestions('123 Main St');
+        const suggestions = await tomTomProvider.getSuggestions('72 Creek');
 
         expect(suggestions).toEqual([
             {
-                address: '123 Main St, Springfield',
-                latitude: 40.123,
-                longitude: -75.123,
+                address: 'Riddells Creek, VIC',
+                latitude: -37.455046,
+                longitude: 144.68643,
+                country: 'Australia',
+                municipality: 'Riddells Creek'
             },
         ]);
     });
@@ -69,17 +70,19 @@ describe('AddressService', () => {
     it('should delegate getSuggestions to the provider', async () => {
         const mockSuggestions: AddressSuggestion[] = [
             {
-                address: '123 Main St, Springfield',
-                latitude: 40.123,
-                longitude: -75.123,
+                address: 'Riddells Creek, VIC',
+                latitude: -37.455046,
+                longitude: 144.68643,
+                country: 'Australia',
+                municipality: 'Riddells Creek'
             },
         ];
 
-        (mockProvider.getSuggestions as vi.Mock).mockResolvedValue(mockSuggestions);
+        (mockProvider.getSuggestions as Mock).mockResolvedValue(mockSuggestions);
 
-        const suggestions = await addressService.getSuggestions('123 Main St');
+        const suggestions = await addressService.getSuggestions('72 Creek');
 
-        expect(mockProvider.getSuggestions).toHaveBeenCalledWith('123 Main St', undefined);
+        expect(mockProvider.getSuggestions).toHaveBeenCalledWith('72 Creek', undefined);
         expect(suggestions).toEqual(mockSuggestions);
     });
 });

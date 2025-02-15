@@ -1,5 +1,15 @@
 # QuickRoute's Address Suggestion API 
 
+## Usage
+```js
+const tomTomProvider = new TomTomProvider({ apiKey: 'your_api_key_here' });
+const addressService = new AddressService(tomTomProvider);
+addressService.getSuggestions('1600 Amphitheatre', { limit: 5, countryCode: 'AU' })
+  .then((suggestions) => console.log(suggestions))
+  .catch((error) => console.error(error));
+
+```
+
 ## prerequisites 🛠️
 - Install NodeJs / NPM
 ```shell
