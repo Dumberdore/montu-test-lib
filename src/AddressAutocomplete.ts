@@ -1,22 +1,27 @@
 // Import necessary modules
-import axios, { AxiosResponse } from 'axios';
+import axios, {AxiosResponse} from 'axios';
 
 interface AddressSuggestion {
     address: string;
     latitude: number;
     longitude: number;
+    // Req. 4 - The result elements should contain important information about the place (country, municipality, etc.)
+    country: string;
+    municipality: string;
 }
 
 interface AddressProvider {
     getSuggestions(query: string, options?: { limit?: number; countryCode?: string }): Promise<AddressSuggestion[]>;
 }
 
+// No need to make this interface public
 interface TomTomConfig {
     apiKey: string;
+    // Add baseUrl
 }
 
 class TomTomProvider implements AddressProvider {
-    private apiKey: string;
+    private readonly apiKey: string;
     private baseUrl: string = 'https://api.tomtom.com/search/2/search';
 
     constructor(config: TomTomConfig) {
@@ -26,23 +31,25 @@ class TomTomProvider implements AddressProvider {
         this.apiKey = config.apiKey;
     }
 
-    public async getSuggestions(query: string, options?: { limit?: number; countryCode?: string }): Promise<AddressSuggestion[]> {
+    public async getSuggestions(query: string, options?: { limit?: number}): Promise<AddressSuggestion[]> {
         if (!query) {
             throw new Error('Query is required to fetch address suggestions');
         }
 
-        const { limit = 10, countryCode } = options || {};
-        const params: Record<string, string | number | boolean> = {
+        // Req. 2 - Restrict results to Australia
+        const CountryCode = 'AU'
+        // Req. 4 - The result elements should contain important information about the place (country, municipality, etc.)
+        const EntityTypeSet = 'Municipality'
+
+        const { limit = 10} = options || {};
+        const params: Record<string, string | number | boolean > = {
             key: this.apiKey,
             query,
             limit,
             typeahead: true,
-            countrySet: 'AU', // Restrict results to Australia
+            countrySet: CountryCode,
+            entityTypeSet: EntityTypeSet
         };
-
-        if (countryCode) {
-            params['countrySet'] = countryCode;
-        }
 
         try {
             const response: AxiosResponse<any> = await axios.get(`${this.baseUrl}.json`, { params });
@@ -59,11 +66,15 @@ class TomTomProvider implements AddressProvider {
         }
 
         return data.results.map((result: any) => {
-            return {
+            const res: AddressSuggestion = {
                 address: result.address?.freeformAddress || '',
                 latitude: result.position?.lat || 0,
                 longitude: result.position?.lon || 0,
+                country: result.address.country || '',
+                municipality: result.address.municipality || '',
             };
+
+            return res;
         });
     }
 }
@@ -79,12 +90,5 @@ class AddressService {
         return this.provider.getSuggestions(query, options);
     }
 }
-
-// Example usage:
-// const tomTomProvider = new TomTomProvider({ apiKey: 'your_api_key_here' });
-// const addressService = new AddressService(tomTomProvider);
-// addressService.getSuggestions('1600 Amphitheatre', { limit: 5, countryCode: 'US' })
-//   .then((suggestions) => console.log(suggestions))
-//   .catch((error) => console.error(error));
 
 export { AddressService, AddressProvider, TomTomProvider, AddressSuggestion };

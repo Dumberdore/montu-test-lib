@@ -27,6 +27,6 @@ etc)
 - No front-end requirements are necessary, this is purely a backend NodeJS library
 
 ## Getting started
-Place Search Documentation: https://developer.tomtom.com/search-api/documentation/searchservice/search-service
+Place Search Documentation: https://developer.tomtom.com/search-api/documentation/search-service/search-service
 
 API Key: <Stored in gh Secrets `TEST_AP_KEY`>
